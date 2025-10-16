@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 class ForexViewModel: ObservableObject {
+    static let shared = ForexViewModel()
+
     @Published var forexPairs: [ForexPair] = []
     @Published var selectedPair: ForexPair?
     @Published var currentQuotes: [String: ForexQuote] = [:]
@@ -60,14 +62,17 @@ class ForexViewModel: ObservableObject {
                 let change = priceChange
                 let changePercent = (change / currentPrice) * 100
 
-                currentQuotes[pair.symbol] = ForexQuote(
-                    symbol: pair.symbol,
-                    bid: currentPrice,
-                    ask: askPrice,
-                    change: change,
-                    changePercent: changePercent,
-                    timestamp: Date()
-                )
+                await MainActor.run {
+                    self.objectWillChange.send()
+                    self.currentQuotes[pair.symbol] = ForexQuote(
+                        symbol: pair.symbol,
+                        bid: currentPrice,
+                        ask: askPrice,
+                        change: change,
+                        changePercent: changePercent,
+                        timestamp: Date()
+                    )
+                }
             }
         }
     }
@@ -167,6 +172,13 @@ class ForexViewModel: ObservableObject {
         }
     }
 
+    func updateQuote(_ quote: ForexQuote) {
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+            self.currentQuotes[quote.symbol] = quote
+        }
+    }
+
     deinit {
         priceUpdateTimer?.invalidate()
     }
@@ -241,7 +253,7 @@ struct ForexNews: Identifiable {
     let sentiment: Sentiment
     let relatedPairs: [String]
 
-    enum Sentiment {
+    enum Sentiment: String {
         case positive
         case negative
         case neutral

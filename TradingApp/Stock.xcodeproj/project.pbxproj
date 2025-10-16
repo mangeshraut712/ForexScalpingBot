@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8C80C1B2EA10E50000D900B /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = D8C80C1A2EA10E50000D900B /* Algorithms */; };
 		DA1797842BDF4FE000CB7220 /* HistoricalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1797832BDF4FE000CB7220 /* HistoricalChartView.swift */; };
 		DA1797862BDFB93400CB7220 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1797852BDFB93400CB7220 /* APIs.swift */; };
 		DA45DD8B2BD49DEE00EE469C /* SingleStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45DD8A2BD49DEE00EE469C /* SingleStock.swift */; };
@@ -24,7 +25,6 @@
 		DACA95212BE31D3100439D6C /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA95202BE31D3100439D6C /* NewsView.swift */; };
 		DACA95242BE31D7500439D6C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DACA95232BE31D7500439D6C /* Kingfisher */; };
 		DAD1EEA82BCF578F00805BCD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DAD1EEA72BCF578F00805BCD /* Alamofire */; };
-		DAD1EEAA2BCF578F00805BCD /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = DAD1EEA92BCF578F00805BCD /* AlamofireDynamic */; };
 		DAD1EEAD2BCF5A3F00805BCD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = DAD1EEAC2BCF5A3F00805BCD /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8C80C1B2EA10E50000D900B /* Algorithms in Frameworks */,
 				DACA95242BE31D7500439D6C /* Kingfisher in Frameworks */,
 				DAD1EEAD2BCF5A3F00805BCD /* SwiftyJSON in Frameworks */,
 				DAD1EEA82BCF578F00805BCD /* Alamofire in Frameworks */,
-				DAD1EEAA2BCF578F00805BCD /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,9 +128,9 @@
 			name = Stock;
 			packageProductDependencies = (
 				DAD1EEA72BCF578F00805BCD /* Alamofire */,
-				DAD1EEA92BCF578F00805BCD /* AlamofireDynamic */,
 				DAD1EEAC2BCF5A3F00805BCD /* SwiftyJSON */,
 				DACA95232BE31D7500439D6C /* Kingfisher */,
+				D8C80C1A2EA10E50000D900B /* Algorithms */,
 			);
 			productName = Stock;
 			productReference = DAC448932BC703AC00B0F64C /* Stock.app */;
@@ -164,6 +164,7 @@
 				DAD1EEA62BCF578F00805BCD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DAD1EEAB2BCF5A3F00805BCD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				DACA95222BE31D7500439D6C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D8C80C192EA10E50000D900B /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = DAC448942BC703AC00B0F64C /* Products */;
 			projectDirPath = "";
@@ -423,6 +424,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D8C80C192EA10E50000D900B /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
 		DACA95222BE31D7500439D6C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -450,6 +459,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D8C80C1A2EA10E50000D900B /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8C80C192EA10E50000D900B /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
 		DACA95232BE31D7500439D6C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DACA95222BE31D7500439D6C /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -459,11 +473,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DAD1EEA62BCF578F00805BCD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		DAD1EEA92BCF578F00805BCD /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DAD1EEA62BCF578F00805BCD /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 		DAD1EEAC2BCF5A3F00805BCD /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -22,8 +22,11 @@ struct ScalpingBot {
     var rsiOversold: Double = 30.0
 
     // EMA Crossover Strategies
-    enum Strategy {
-        case emaCrossover, rsiDivergence, breakout, reversal
+    enum Strategy: String, CaseIterable, Codable {
+        case emaCrossover = "EMACrossover"
+        case rsiDivergence = "RSIDivergence"
+        case breakout = "Breakout"
+        case reversal = "Reversal"
     }
 
     var activeStrategy: Strategy = .emaCrossover
@@ -38,7 +41,7 @@ struct ScalpingBot {
 }
 
 // Trade Model
-struct ForexTrade {
+struct ForexTrade: Identifiable {
     let id = UUID()
     let pair: String
     let direction: TradeDirection
@@ -54,7 +57,7 @@ struct ForexTrade {
     var strategy: String
     var notes: String?
 
-    enum TradeDirection {
+    enum TradeDirection: String, Codable {
         case buy, sell
     }
 
@@ -74,6 +77,17 @@ struct ForexTrade {
     var pnlPercentage: Double? {
         guard let pnl = pnl, let exitPrice = exitPrice else { return nil }
         return (pnl / (entryPrice * lotSize)) * 100
+    }
+}
+
+extension ScalpingBot.Strategy {
+    var displayName: String {
+        switch self {
+        case .emaCrossover: return "EMA Crossover"
+        case .rsiDivergence: return "RSI Divergence"
+        case .breakout: return "Breakout"
+        case .reversal: return "Reversal"
+        }
     }
 }
 
@@ -107,7 +121,7 @@ class EMACalculator {
         guard prices.count >= period else { return [] }
 
         var emaValues: [Double] = []
-        var multiplier = 2.0 / Double(period + 1)
+        let multiplier = 2.0 / Double(period + 1)
         var ema = prices[0]
 
         emaValues.append(ema)
@@ -121,7 +135,7 @@ class EMACalculator {
     }
 
     func getEMACrossoverSignal() -> TraderAction? {
-        guard prices.count >= max(13, prices.count) else { return nil }
+        guard prices.count >= 13 else { return nil }
 
         let fastEMA = calculateEMAArray(period: 5)
         let slowEMA = calculateEMAArray(period: 13)
@@ -154,20 +168,24 @@ class EMACalculator {
 class RSICalculator {
     private var gains: [Double] = []
     private var losses: [Double] = []
+    private var previousPrice: Double?
 
     func addPrice(_ price: Double) {
-        if gains.count > 0 {
-            let change = price - gains.last!
-            if change > 0 {
-                gains.append(change)
-                losses.append(0)
-            } else {
-                gains.append(0)
-                losses.append(abs(change))
-            }
-        } else {
+        defer { previousPrice = price }
+
+        guard let lastPrice = previousPrice else {
             gains.append(0)
             losses.append(0)
+            return
+        }
+
+        let change = price - lastPrice
+        if change > 0 {
+            gains.append(change)
+            losses.append(0)
+        } else {
+            gains.append(0)
+            losses.append(abs(change))
         }
     }
 

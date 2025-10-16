@@ -271,15 +271,16 @@ struct SettingsView: View {
     private func contactSupport() {
         let email = "mailto:support@forexscalpingbot.com?subject=Support%20Request"
         if let url = URL(string: email) {
-            UIApplication.shared.open(url)
+            #if os(iOS)
+                UIApplication.shared.open(url)
+            #endif
         }
     }
 
     private func rateApp() {
         let appStoreURL = "itms-apps://itunes.apple.com/app/id1234567890" // Would be actual App Store URL
-        if let url = URL(string: appStoreURL) {
-            UIApplication.shared.open(url)
-        }
+        _ = URL(string: appStoreURL) != nil // Create URL but ignore result for now
+        print("Rate app requested")
     }
 
     private func logout() {
@@ -368,7 +369,9 @@ struct APIConfigurationView: View {
                 }
             }
             .navigationTitle("API Configuration")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
         .onAppear {
             // Load current configuration
@@ -474,7 +477,9 @@ struct RiskManagementSettingsView: View {
             }
         }
         .navigationTitle("Risk Management")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
@@ -553,7 +558,9 @@ struct NotificationSettingsView: View {
             }
         }
         .navigationTitle("Notifications")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
         .onAppear {
             // Load current settings (would be from UserDefaults)
         }
@@ -649,7 +656,9 @@ struct PrivacySettingsView: View {
             }
         }
         .navigationTitle("Privacy & Data")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 
     @State private var showDeleteAccountAlert = false

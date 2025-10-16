@@ -6,7 +6,7 @@
             "args": [],
             "cwd": "${workspaceFolder:ForexScalpingBot}/ForexScalpingBot",
             "name": "Debug ForexScalpingBot (ForexScalpingBot)",
-            "program": "/Users/mangeshraut/Desktop/ForexScalpingBot/ForexScalpingBot/.build/arm64-apple-macosx/debug/ForexScalpingBot",
+            "program": "/Users/mangeshraut/Downloads/ForexScalpingBot/ForexScalpingBot/.build/arm64-apple-macosx/debug/ForexScalpingBot",
             "preLaunchTask": "swift: Build Debug ForexScalpingBot (ForexScalpingBot)"
         },
         {
@@ -15,7 +15,7 @@
             "args": [],
             "cwd": "${workspaceFolder:ForexScalpingBot}/ForexScalpingBot",
             "name": "Release ForexScalpingBot (ForexScalpingBot)",
-            "program": "/Users/mangeshraut/Desktop/ForexScalpingBot/ForexScalpingBot/.build/arm64-apple-macosx/release/ForexScalpingBot",
+            "program": "/Users/mangeshraut/Downloads/ForexScalpingBot/ForexScalpingBot/.build/arm64-apple-macosx/release/ForexScalpingBot",
             "preLaunchTask": "swift: Build Release ForexScalpingBot (ForexScalpingBot)"
         }
     ]

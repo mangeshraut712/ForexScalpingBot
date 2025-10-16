@@ -5,7 +5,6 @@ let package = Package(
     name: "ForexScalpingBot",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v16),
         .macOS(.v13)
     ],
     products: [

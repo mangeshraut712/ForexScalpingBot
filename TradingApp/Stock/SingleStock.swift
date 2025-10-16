@@ -354,21 +354,19 @@ struct aboutView: View{
 
 #Preview("SingleStock Full") {
     NavigationView{
-        @State var portfolioItem = PortfolioItem(id:"1", avgPrice:123.00, ticker:"AAPL", name: "Apple Inc.", qty:3);
+        let portfolio: [Stock.PortfolioItem] = [
+            Stock.PortfolioItem(id: "66262253ec5e05aee42f98f2", avgPrice: 165.0, ticker: "AAPL", name: "Apple Inc", qty: 10),
+            Stock.PortfolioItem(id: "6626227aec5e05aee42f9900", avgPrice: 713.65, ticker: "SMCI", name: "Super Micro Computer Inc", qty: 10)
+        ]
+        let favourites: [FavouritesItem] = [FavouritesItem(ticker: "AAPL", name: "Apple Inc.", id: "1")]
+        let cashBalance: Double = 25000.00
         
-        @State var quote = Quote(c: 173.5, d:4.2,dp:2.488, h: 176.03, l:173.12,o:173.39,pc:169.3, t:1714420801)
-        
-        @State var portfolio = [Stock.PortfolioItem(id: "66262253ec5e05aee42f98f2", avgPrice: 165.0, ticker: "AAPL", name: "Apple Inc", qty: 10), Stock.PortfolioItem(id: "6626227aec5e05aee42f9900", avgPrice: 713.65, ticker: "SMCI", name: "Super Micro Computer Inc", qty: 10)]
-        @State var favourites = [FavouritesItem(ticker:"AAPL",name:"Apple Inc.", id:"1")]
-        @State var cashBalance = 25000.00
-        
-        SingleStock(ticker: "AAPL", portfolio: $portfolio, favourites: $favourites, cashBalance: $cashBalance)
-//        portfolioView(portfolio: $portfolio, inPortfolio: false, quote: quote, ticker: "AAPL", profile: Profile.empty, cashBalance: $cashBalance)
-        
+        SingleStock(
+            ticker: "AAPL",
+            portfolio: .constant(portfolio),
+            favourites: .constant(favourites),
+            cashBalance: .constant(cashBalance)
+        )
     }
    
 }
-
-
-
-

@@ -195,7 +195,7 @@ class ScalpingBotViewModel: ObservableObject {
             lotSize: lotSize,
             timestamp: signal.timestamp,
             status: .open,
-            strategy: bot.activeStrategy.rawValue.capitalized
+            strategy: bot.activeStrategy.displayName
         )
 
         pendingTrades.append(trade)
@@ -331,11 +331,16 @@ struct TradingSignal {
     let reason: String
     let timestamp: Date
 
-    enum TradeAction {
-        case buy, sell
+    enum TradeAction: String {
+        case buy
+        case sell
+
+        var displayName: String {
+            rawValue.capitalized
+        }
     }
 
     var description: String {
-        "\(action.rawValue.uppercased()) \(pair) - \(String(format: "%.1f", confidence * 100))% confidence"
+        "\(action.displayName.uppercased()) \(pair) - \(String(format: "%.1f", confidence * 100))% confidence"
     }
 }

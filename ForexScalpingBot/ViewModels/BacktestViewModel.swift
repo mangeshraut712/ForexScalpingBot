@@ -84,7 +84,7 @@ class BacktestViewModel: ObservableObject {
                                 entryPrice: entryPrice,
                                 exitPrice: exitPrice,
                                 pnl: pnl,
-                                strategy: bot.activeStrategy.rawValue,
+                                strategy: bot.activeStrategy.displayName,
                                 lotSize: lotSize
                             )
 

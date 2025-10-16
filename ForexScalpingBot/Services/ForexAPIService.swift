@@ -24,9 +24,9 @@ class ForexAPIService: ObservableObject {
     @Published var lastUpdate: Date?
     @Published var connectionStatus = ConnectionStatus.disconnected
 
-    private var selectedBroker: Broker = .mock
-    private var apiKey: String?
-    private var accountId: String?
+    var selectedBroker: Broker = .mock
+    var apiKey: String?
+    var accountId: String?
     private var cancellables = Set<AnyCancellable>()
     private var priceUpdatesTimer: Timer?
     private var websocketConnection: URLSessionWebSocketTask?
@@ -477,19 +477,4 @@ struct OANDAPrice: Codable {
 struct OANDAPricePoint: Codable {
     let price: Double
     let liquidity: Int
-}
-
-// MARK: - Extension to share with ForexViewModel
-
-extension ForexViewModel {
-    static var shared: ForexViewModel {
-        let forexVM = ForexViewModel()
-        // Additional setup if needed
-        return forexVM
-    }
-
-    func updateQuote(_ quote: ForexQuote) {
-        currentQuotes[quote.symbol] = quote
-        objectWillChange.send()
-    }
 }

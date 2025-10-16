@@ -325,7 +325,7 @@ struct BotSettingsCard: View {
                         Text("Strategy")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        Text("\(botViewModel.bot.activeStrategy.rawValue.capitalized)")
+                        Text(botViewModel.bot.activeStrategy.displayName)
                             .font(.headline)
                     }
 
