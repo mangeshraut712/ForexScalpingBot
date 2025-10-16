@@ -1,0 +1,41 @@
+# Xcode
+.DS_Store
+*.xcodeproj/xcuserdata/*
+*.xcodeproj/project.xcworkspace
+UserInterfaceState.xcuserstate
+DerivedData/
+*.hmap
+*.xccheckout
+*.moved-aside
+*.user
+*.mode1v3
+*.mode2v3
+*.persp
+
+# Build products
+.build/
+Build/
+build/
+
+# Swift Package Manager
+.swiftpm/
+
+# SPM
+englobe/
+Package.resolved
+
+# User-specific
+*.xcbkptlist
+
+# macOS app
+*.app
+
+# Code Signing
+*.entitlements
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log

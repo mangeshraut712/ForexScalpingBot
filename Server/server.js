@@ -42,7 +42,6 @@ var corsMiddleware = function (req, res, next) {
 
 app.use(corsMiddleware);
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "./static")));
 
 app.get("/ping", async (req, res) => {
   res.json({ Res: "Pong" });
@@ -422,7 +421,7 @@ app.get("/api/portfolio/:ticker", async (req, res) => {
     if (amount) {
       // let newRes = { ...amount, exist: true };
       // res.json({ response: newRes, err: "" });
-      res.json(amount.response._doc);
+      res.json(amount._doc);
     } else {
       let newRes = { exist: false };
       res.json({ response: newRes, err: "" });
@@ -432,19 +431,23 @@ app.get("/api/portfolio/:ticker", async (req, res) => {
   }
 });
 
-app.post("/api/wallet/deposit", async (req, res) => {
+app.put("/api/wallet/deposit", async (req, res) => {
   let { amount } = req.body;
-  let newAmount = new wallet({ Amount: amount });
   try {
-    await newAmount.save();
+    let existingWallet = await wallet.findOne();
+    if (existingWallet) {
+      await wallet.updateOne({}, { $set: { Amount: amount } });
+    } else {
+      let newAmount = new wallet({ Amount: amount });
+      await newAmount.save();
+    }
     res.json({ response: "Success", err: "" });
   } catch (e) {
     res.status(500).json({ response: "", err: e });
   }
 });
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./static", "index.html"));
+// Catch-all handler for undefined routes
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found" });
 });
-
-
