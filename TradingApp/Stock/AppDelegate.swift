@@ -30,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - iOS 26 Background Tasks
     @available(iOS 26.0, *)
     private func registerBackgroundTasks() {
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.stocktradingapp.backgroundupdate", using: nil) { task in
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.quantumscalptrading.backgroundupdate", using: nil) { task in
             self.handleBackgroundPriceUpdate(task)
         }
 
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.stocktradingapp.datasync", using: nil) { task in
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.quantumscalptrading.datasync", using: nil) { task in
             self.handleDataSync(task)
         }
     }
@@ -115,10 +115,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Background Task Scheduling
     @available(iOS 26.0, *)
     private func scheduleBackgroundTasks() {
-        let priceUpdateTask = BGAppRefreshTaskRequest(identifier: "com.stocktradingapp.backgroundupdate")
+        let priceUpdateTask = BGAppRefreshTaskRequest(identifier: "com.quantumscalptrading.backgroundupdate")
         priceUpdateTask.earliestBeginDate = Date(timeIntervalSinceNow: 3600) // 1 hour
 
-        let dataSyncTask = BGProcessingTaskRequest(identifier: "com.stocktradingapp.datasync")
+        let dataSyncTask = BGProcessingTaskRequest(identifier: "com.quantumscalptrading.datasync")
         dataSyncTask.requiresNetworkConnectivity = true
         dataSyncTask.earliestBeginDate = Date(timeIntervalSinceNow: 7200) // 2 hours
 

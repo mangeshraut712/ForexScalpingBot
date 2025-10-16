@@ -187,23 +187,21 @@ struct portfolioView: View{
    
     
 
-    var portfolioItem: PortfolioItem{
-        for item in portfolio{
-           
-            if item.ticker == ticker{
-                DispatchQueue.main.async{
-                    self.inPortfolio = true
-                    print(inPortfolio)
-                }
-                return item
-            }
+    // Purely computed item; do not mutate view state here
+    var computedPortfolioItem: PortfolioItem {
+        if let found = portfolio.first(where: { $0.ticker == ticker }) {
+            return found
         }
-        self.inPortfolio = false
         return PortfolioItem.empty
+    }
+
+    // Derive presence without mutating state during render
+    var computedInPortfolio: Bool {
+        portfolio.contains(where: { $0.ticker == ticker })
     }
     
     var changeInPrice: Double {
-        return (quote.c - portfolioItem.avgPrice)*Double(portfolioItem.qty)
+        return (quote.c - computedPortfolioItem.avgPrice) * Double(computedPortfolioItem.qty)
     }
     
     var body: some View{
@@ -222,7 +220,7 @@ struct portfolioView: View{
                     Text("Portfolio").font(.title)
                     Spacer()
                 }.padding()
-                if(!(inPortfolio)){
+                if(!computedInPortfolio){
                     HStack{
                         VStack(alignment: .leading){
                             Text("You have 0 shares of \(ticker).").font(.callout).lineLimit(1)
@@ -234,17 +232,17 @@ struct portfolioView: View{
                 
                 HStack{
                     Text("Shares Owned: ").font(.callout).bold().padding(.leading)
-                    Text("\(portfolioItem.qty)").font(.callout)
+                    Text("\(computedPortfolioItem.qty)").font(.callout)
                     Spacer()
                 }
                 HStack{
                     Text("Avg. Cost / Share:").font(.callout).bold().padding(.leading).lineLimit(1)
-                    Text("$\(portfolioItem.avgPrice, specifier: "%.2f")").font(.callout)
+                    Text("$\(computedPortfolioItem.avgPrice, specifier: "%.2f")").font(.callout)
                     Spacer()
                 }.padding(.top)
                 HStack{
                     Text("Total Cost:").font(.callout).bold().padding(.leading)
-                    Text("$\(portfolioItem.avgPrice*Double(portfolioItem.qty), specifier: "%.2f")").font(.callout)
+                    Text("$\(computedPortfolioItem.avgPrice*Double(computedPortfolioItem.qty), specifier: "%.2f")").font(.callout)
                     Spacer()
                 }.padding(.top)
                 HStack{
@@ -254,12 +252,12 @@ struct portfolioView: View{
                 }.padding(.top)
                 HStack{
                     Text("Market Value:").font(.callout).bold().padding(.leading)
-                    Text("$\(quote.c * Double(portfolioItem.qty), specifier: "%.2f")").font(.callout).foregroundColor(changeCol)
+                    Text("$\(quote.c * Double(computedPortfolioItem.qty), specifier: "%.2f")").font(.callout).foregroundColor(changeCol)
                     Spacer()
                 }.padding(.top)
             }
             }
-            TradeSheetView(inPortfolio: $inPortfolio, portfolio: $portfolio, name: profile.name, walletAmount: $cashBalance, ticker: ticker, portfolioItem: portfolioItem)
+            TradeSheetView(inPortfolio: $inPortfolio, portfolio: $portfolio, name: profile.name, walletAmount: $cashBalance, ticker: ticker, portfolioItem: computedPortfolioItem)
         }
         
     }
@@ -370,3 +368,4 @@ struct aboutView: View{
     }
    
 }
+

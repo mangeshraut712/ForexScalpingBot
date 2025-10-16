@@ -67,8 +67,8 @@
 	</dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.stocktradingapp.backgroundupdate</string>
-		<string>com.stocktradingapp.datasync</string>
+		<string>com.quantumscalptrading.backgroundupdate</string>
+		<string>com.quantumscalptrading.datasync</string>
 	</array>
 	<key>NSHomeKitUsageDescription</key>
 	<string>This app uses HomeKit for smart home trading notifications</string>

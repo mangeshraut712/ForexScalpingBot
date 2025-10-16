@@ -43,7 +43,7 @@ var corsMiddleware = function (req, res, next) {
 app.use(corsMiddleware);
 app.use(express.json());
 
-app.get("/ping", async (req, res) => {
+app.get("/api/ping", async (req, res) => {
   res.json({ Res: "Pong" });
 });
 
