@@ -118,3 +118,20 @@ swift run ForexScalpingBot
 Your Stock Trading App demonstrates **enterprise-level full-stack development** with modern iOS 26 features, making it competitive with commercial trading platforms while maintaining a clean, professional codebase.
 
 **🎉 You built one of the most advanced stock trading apps available!** 🌟💰
+
+---
+
+<!-- codex:project-diagram:start -->
+
+## Project Diagram
+
+```mermaid
+flowchart LR
+    A["Mobile App"] --> B["Backend Service"]
+    B --> C["Trading / Data"]
+    C --> D["Outputs"]
+```
+
+_Mobile-first product flow and its supporting backend path._
+
+<!-- codex:project-diagram:end -->
