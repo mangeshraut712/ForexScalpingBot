@@ -1,120 +1,134 @@
-# 🚀 [QuantumScalp - AI-Powered Quantum Trading](https://drive.google.com/file/d/1Ol1roW9YVrpIwGaZK-QpPgqVzTm6dhIb/view?usp=sharing)
+<a id="top"></a>
 
-<p align="center">
-  <img src="./imgs/Home.png" alt="Home Section" height="446"> Liquid Glass Home Page
-  <img src="https://github.com/user-attachments/assets/fca9388b-3923-429d-bab6-a41ce95abdd0" alt="Stock Page" height="446"> Quantum Stock Page
-  <img src="./imgs/News.png" alt="News Section" height="446"> Liquid News Section
-</p>
+<div align="center">
 
-**⭐ Liquid Glass Design System - iOS 26 Enhanced**
+# ForexScalpingBot
 
-## ✨ **QuantumScalp: AI-Powered Liquid Glass Trading Experience**
+### _SwiftUI forex trading assistant with paper trading and a companion backend_
 
-### 💧 **Liquid Glass Design Features:**
-- **🌊 Morphing Glass Morphology**: Quantum particle effects with liquid immersion
-- **⚛️ Quantum Color Palette**: Liquid blue, quantum purple, and liquid cyan
-- **✨ Liquid Glow Particles**: Subtle glowing particles across interfaces
-- **🏞️ Liquid Glass Cards**: Frosted glass backgrounds with smooth quantum animations
-- **🌈 Dynamic Gradients**: Flowing quantum gradients throughout the app
+<img src="https://img.shields.io/badge/SwiftUI-iOS_App-F05138?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI badge" />
+<img src="https://img.shields.io/badge/Swift-5+-FA7343?style=for-the-badge&logo=swift&logoColor=white" alt="Swift badge" />
+<img src="https://img.shields.io/badge/Node.js-Server-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js badge" />
+<img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB badge" />
+<img src="https://img.shields.io/badge/Repository-Readme_Refresh-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repository badge" />
 
-## 🔥 **What's NEW in QuantumScalp**
+**[About](#about) • [Features](#features) • [Tech Stack](#tech-stack) • [Quick Start](#quick-start) • [Project Structure](#project-structure) • [Scripts](#scripts) • [License](#license)**
 
-### 🔥 **Modern Features Added:**
-- **📱 Live Activities & Dynamic Island**: Real-time stock price updates on lock screen
-- **🔲 Enhanced Widgets**: Equity overview and watchlist widgets
-- **🎙️ Siri App Intents**: Voice trading and portfolio checking
-- **🔄 Background Tasks**: Automatic price updates and data sync
-- **📱 Enhanced Scene Management**: Better app lifecycle and performance
-- **📊 Enhanced Privacy**: On-device processing optimizations
-- **🔗 Deep Links**: Custom URL schemes for stock sharing
-
-### 🎯 **Siri Integration:**
-- "Hey Siri, buy 10 shares of AAPL"
-- "What's my portfolio value?"
-- "Search for Tesla stock"
-- "How is Apple performing today?"
-
-## 📱 **Core Features (All Working!)**
-✅ **Live market updates** - Real-time stock quotes from Finnhub API
-✅ **Portfolio management** - Track investments, cash balance, net worth
-✅ **Smart search** - Autocomplete stock search with instant suggestions
-✅ **Favorites system** - Custom watchlist for preferred stocks
-✅ **Multi-chart types** - Hourly, Historical, EPS, Recommendations
-✅ **News integration** - Full articles with social sharing
-✅ **Trading system** - Buy/sell stocks with instant confirmation
-✅ **Advanced analytics** - Stock sentiment, peer comparisons
-
-## 🏆 **What Makes This App Special**
-
-### vs. Robinhood/Merrill Lynch:
-- ✨ **Professional Charts**: Multi-timeframe analysis vs basic candlesticks
-- ✨ **Complete News**: Full articles vs headlines only
-- ✨ **Real-time API**: Live market data vs delayed quotes
-- ✨ **Deep Analytics**: Earnings charts, sentiment data
-- ✨ **Voice Trading**: Siri integration for hands-free trading
-
-### vs. Schwab/TD Ameritrade:
-- ✨ **Modern UI**: SwiftUI interface vs legacy native
-- ✨ **Rich News**: Full reading experience with article expansion
-- ✨ **Easy Navigation**: One-tap stock details and trading
-- ✨ **Background Updates**: Automatic price sync without app open
-
-### vs. Yahoo Finance/Webull:
-- ✨ **Trading Focus**: Dedicated buy/sell interface
-- ✨ **Superior News**: Full article reading and social sharing
-- ✨ **Portfolio Depth**: Advanced P&L calculations and analytics
-- ✨ **Live Activities**: Dynamic island and lock screen updates
-
-## 🛠️ **Tech Stack (Enterprise-Grade)**
-- **Frontend**: SwiftUI + MVVM + Combine
-- **Backend**: Node.js + Express + MongoDB Atlas
-- **APIs**: Finnhub, Polygon - Real financial data
-- **Features**: Live Activities, Widgets, Siri Shortcuts
-- **Architecture**: Clean, scalable, production-ready
-
-## 🚀 **Getting Started**
-
-### Server Setup:
-```bash
-cd Server
-npm install
-npm run server  # Server running on localhost:8080
-```
-
-### iOS App (QuantumScalp):
-1. Open `TradingApp/Stock.xcodeproj`
-2. Select target: iOS 17.0+ device/simulator
-3. Build & Run - experience Liquid Glass quantum trading!
-
-### CLI Bot (ForexScalpingBot):
-```bash
-swift run ForexScalpingBot
-# CLI trading bot with real market signals
-```
-
-## 🌟 **Why This App Excels**
-
-### **Professional Requirements Met:**
-- ✅ Real-time market data integration
-- ✅ Sophisticated UI/UX design patterns
-- ✅ Production database architecture
-- ✅ Modern iOS 26 API integration
-- ✅ Background task management
-- ✅ Enhanced privacy features
-- ✅ Voice assistant integration
-
-### **Market Advantages:**
-- **Superior Charts**: Professional-grade charting
-- **News Depth**: Complete article reading experience
-- **Trading Ease**: Seamless buy/sell workflow
-- **Data Quality**: Live financial APIs
-- **Modern UX**: iOS 26 enhanced features
-- **Smart Automation**: Background updates and notifications
+</div>
 
 ---
 
-## 🎯 **Result: Professional Trading Platform**
+## 📖 Table of Contents
 
-Your Stock Trading App demonstrates **enterprise-level full-stack development** with modern iOS 26 features, making it competitive with commercial trading platforms while maintaining a clean, professional codebase.
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Scripts](#scripts)
+- [License](#license)
 
-**🎉 You built one of the most advanced stock trading apps available!** 🌟💰
+---
+
+<a id="about"></a>
+
+## About
+
+ForexScalpingBot is a multi-target trading demo that combines a SwiftUI experience, a stock-trading companion app, and a Node-backed service layer. The repo focuses on forex-style dashboards, watchlists, paper trading flows, charts, and data views that make the app feel closer to a product than a prototype.
+
+<a id="features"></a>
+
+## Features
+
+- SwiftUI dashboards for trading, signals, settings, and journaling.
+- Chart-heavy views for hourly, historical, earnings, and news-driven context.
+- Paper-trading style models for balances, portfolios, wallets, and watchlists.
+- Companion Node service for lightweight persistence and API-style responses.
+- Separate iOS app targets that let you open the stock project directly in Xcode.
+
+<a id="tech-stack"></a>
+
+## Tech Stack
+
+**Client**
+
+- SwiftUI
+- Swift Package Manager
+- Combine
+- Xcode
+
+**Server**
+
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+
+**Tooling**
+
+- iOS project files
+- npm scripts for the server
+- Xcode workspace/project settings
+
+<a id="quick-start"></a>
+
+## Quick Start
+
+### Prerequisites
+
+- Xcode 15+
+- Swift 5+
+- Node.js 20+
+- npm
+
+### Run the Node backend
+
+```bash
+cd Server
+npm install
+npm run server
+```
+
+### Open the iOS app
+
+```bash
+open TradingApp/Stock.xcodeproj
+```
+
+### Run the Swift package target
+
+```bash
+swift run ForexScalpingBot
+```
+
+<a id="project-structure"></a>
+
+## Project Structure
+
+```text
+ForexScalpingBot/
+├── ForexScalpingBot/   # SwiftUI app, view models, and services
+├── TradingApp/Stock/   # Xcode stock app target and assets
+├── Server/             # Node service and persistence models
+├── imgs/               # Preview images used in the README
+└── readme.md           # Project documentation
+```
+
+<a id="scripts"></a>
+
+## Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `cd Server && npm run server` | Start the Node backend with nodemon |
+| `swift run ForexScalpingBot` | Launch the Swift package target |
+| `open TradingApp/Stock.xcodeproj` | Open the stock app in Xcode |
+| `npm install` | Install server dependencies |
+
+<a id="license"></a>
+
+## License
+
+The backend service is licensed under MIT in [`Server/LICENSE`](Server/LICENSE). Refer to the repository files for the full licensing context.
+
+[↑ Back to Top](#top)
